@@ -13,10 +13,12 @@
     "relay": "relay-compiler"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-relay": "^20.1.1",
-    "relay-runtime": "^20.1.1"
+    "relay-runtime": "^20.1.1",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -38,6 +40,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-tsconfig-paths": "^6.0.4"
   }
 }
