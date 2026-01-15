@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -25,12 +25,15 @@
     "@types/relay-runtime": "^20.1.1",
     "@vitejs/plugin-react": "^5.1.1",
     "babel-plugin-relay": "^20.1.1",
+    "dotenv": "^17.2.3",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "get-graphql-schema": "^2.1.2",
     "globals": "^16.5.0",
     "graphql": "^16.12.0",
     "relay-compiler": "^20.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
