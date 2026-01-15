@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "update-schema": "ts-node scripts/updateSchema.ts"
+    "update-schema": "ts-node scripts/updateSchema.ts",
+    "relay": "relay-compiler"
   },
   "dependencies": {
     "react": "^19.2.0",

@@ -3,7 +3,7 @@ import { Environment, Network, type FetchFunction } from "relay-runtime";
 export const graphqlClient: FetchFunction = async (request, variables) => {
   const resp = await fetch(import.meta.env.VITE_GRAPHQL_API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}` },
     body: JSON.stringify({ query: request.text, variables }),
   });
   if (!resp.ok) {
