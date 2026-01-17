@@ -1,8 +1,8 @@
-import useRepositoryQuery from '@/search/api/useRepositoryQuery'
-import RepositoryList from '@/search/components/RepositoryList'
 import RepositorySearchForm from '@/search/components/RepositorySearchForm'
+import RepositorySearchResult from '@/search/containers/RepositorySearchResult'
 import { RepositorySearchContext } from '@/search/model/RepositorySearchContext'
-import { useState, type ReactNode } from 'react'
+import Loading from '@/shared/ui/Loading'
+import { Suspense, useState, type ReactNode } from 'react'
 
 const RepositorySearchWrapper = ({ children }: { children: ReactNode }) => {
   const [query, setQuery] = useState<string>('')
@@ -11,16 +11,18 @@ const RepositorySearchWrapper = ({ children }: { children: ReactNode }) => {
     setQuery(searchQuery)
   }
 
-  const { search: searchResult } = useRepositoryQuery({ query })
-
   return (
-    <RepositorySearchContext.Provider value={{ searchResult, handleSearch }}>
+    <RepositorySearchContext.Provider value={{ query, handleSearch }}>
       {children}
     </RepositorySearchContext.Provider>
   )
 }
 
 RepositorySearchWrapper.Input = RepositorySearchForm
-RepositorySearchWrapper.Result = RepositoryList
+RepositorySearchWrapper.Result = () => (
+  <Suspense fallback={<Loading />}>
+    <RepositorySearchResult />
+  </Suspense>
+)
 
 export default RepositorySearchWrapper
