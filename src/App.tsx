@@ -1,6 +1,8 @@
 import RepositorySearchWrapper from '@/search/containers/RepositorySearchWrapper'
 import { BookmarkDropdown } from './search/components/BookmarkDropdown'
 import BookmarkProvider from '@/search/components/BookmarkProvider'
+import { Suspense } from 'react'
+import Loading from '@/shared/ui/Loading'
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         </div>
         <RepositorySearchWrapper>
           <RepositorySearchWrapper.Input />
-          <RepositorySearchWrapper.Result />
+          <Suspense fallback={<Loading />}>
+            <RepositorySearchWrapper.Result />
+          </Suspense>
         </RepositorySearchWrapper>
       </main>
     </BookmarkProvider>
