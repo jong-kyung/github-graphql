@@ -14,6 +14,7 @@ import BookMarkButton from '@/search/components/BookmarkButton'
 import RepositoryTopicList from '@/search/components/RepositoryTopicList'
 import RepositoryLanguageInfo from '@/search/components/RepositoryLanguageInfo'
 import RepositoryLicenseInfo from '@/search/components/RepositoryLicenseInfo'
+import { memo } from 'react'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -65,4 +66,4 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
   )
 }
 
-export default RepositoryCard
+export default memo(RepositoryCard)
