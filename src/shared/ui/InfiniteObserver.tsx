@@ -32,15 +32,13 @@ const InfiniteObserver = ({
     )
 
     intersectionObserverRef.current.observe(observerRef.current)
-  }, [hasNext, loadNext, isFetchingNextPage])
 
-  useEffect(() => {
     return () => {
       if (!intersectionObserverRef.current) return
       intersectionObserverRef.current.disconnect()
       intersectionObserverRef.current = null
     }
-  }, [])
+  }, [hasNext, loadNext, isFetchingNextPage])
 
   return <div className="h-px w-full" ref={observerRef} />
 }
