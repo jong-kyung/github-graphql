@@ -16,7 +16,7 @@ const RepositoryList = ({ fragmentKey }: RepositoryListProps) => {
 
   return (
     <>
-      <div className="mx-auto mt-4 max-w-4xl space-y-4">
+      <div className="mx-auto mt-8 max-w-4xl space-y-4">
         {data.search.edges?.map((edge) => {
           if (!edge?.node) {
             return null
