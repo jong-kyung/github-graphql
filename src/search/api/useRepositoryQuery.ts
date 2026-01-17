@@ -9,29 +9,7 @@ const repositoryQuery = graphql`
         node {
           ... on Repository {
             id
-            name
-            owner {
-              login
-            }
-            stargazerCount
-            forkCount
-            updatedAt
-            url
-            description
-            licenseInfo {
-              name
-            }
-            primaryLanguage {
-              name
-              color
-            }
-            repositoryTopics(first: 10) {
-              nodes {
-                topic {
-                  name
-                }
-              }
-            }
+            ...fragment_repository
           }
         }
       }

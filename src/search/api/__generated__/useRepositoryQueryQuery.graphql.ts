@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2f4116861677817d6375829110d06c95>>
+ * @generated SignedSource<<35fefa04698b05c84f423aa93ecdc061>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type useRepositoryQueryQuery$variables = {
   first?: number | null | undefined;
   query: string;
@@ -17,30 +18,8 @@ export type useRepositoryQueryQuery$data = {
   readonly search: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly description?: string | null | undefined;
-        readonly forkCount?: number;
         readonly id?: string;
-        readonly licenseInfo?: {
-          readonly name: string;
-        } | null | undefined;
-        readonly name?: string;
-        readonly owner?: {
-          readonly login: string;
-        };
-        readonly primaryLanguage?: {
-          readonly color: string | null | undefined;
-          readonly name: string;
-        } | null | undefined;
-        readonly repositoryTopics?: {
-          readonly nodes: ReadonlyArray<{
-            readonly topic: {
-              readonly name: string;
-            };
-          } | null | undefined> | null | undefined;
-        };
-        readonly stargazerCount?: number;
-        readonly updatedAt?: any;
-        readonly url?: any;
+        readonly " $fragmentSpreads": FragmentRefs<"fragment_repository">;
       } | null | undefined;
     } | null | undefined> | null | undefined;
   };
@@ -82,83 +61,17 @@ v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "__typename",
   "storageKey": null
 },
 v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "login",
-  "storageKey": null
-},
-v7 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "stargazerCount",
-  "storageKey": null
-},
-v8 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "forkCount",
-  "storageKey": null
-},
-v9 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "updatedAt",
-  "storageKey": null
-},
-v10 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "url",
-  "storageKey": null
-},
-v11 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "description",
-  "storageKey": null
-},
-v12 = [
-  (v5/*: any*/)
-],
-v13 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "color",
-  "storageKey": null
-},
-v14 = [
-  {
-    "kind": "Literal",
-    "name": "first",
-    "value": 10
-  }
-],
-v15 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-},
-v16 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "cursor",
   "storageKey": null
 },
-v17 = {
+v7 = {
   "alias": null,
   "args": null,
   "concreteType": "PageInfo",
@@ -183,7 +96,7 @@ v17 = {
   ],
   "storageKey": null
 },
-v18 = [
+v8 = [
   {
     "kind": "Variable",
     "name": "first",
@@ -192,8 +105,15 @@ v18 = [
   (v2/*: any*/),
   (v3/*: any*/)
 ],
-v19 = [
-  (v5/*: any*/),
+v9 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+},
+v10 = [
+  (v9/*: any*/),
   (v4/*: any*/)
 ];
 return {
@@ -237,92 +157,24 @@ return {
                     "kind": "InlineFragment",
                     "selections": [
                       (v4/*: any*/),
-                      (v5/*: any*/),
                       {
-                        "alias": null,
                         "args": null,
-                        "concreteType": null,
-                        "kind": "LinkedField",
-                        "name": "owner",
-                        "plural": false,
-                        "selections": [
-                          (v6/*: any*/)
-                        ],
-                        "storageKey": null
-                      },
-                      (v7/*: any*/),
-                      (v8/*: any*/),
-                      (v9/*: any*/),
-                      (v10/*: any*/),
-                      (v11/*: any*/),
-                      {
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "License",
-                        "kind": "LinkedField",
-                        "name": "licenseInfo",
-                        "plural": false,
-                        "selections": (v12/*: any*/),
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "Language",
-                        "kind": "LinkedField",
-                        "name": "primaryLanguage",
-                        "plural": false,
-                        "selections": [
-                          (v5/*: any*/),
-                          (v13/*: any*/)
-                        ],
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": (v14/*: any*/),
-                        "concreteType": "RepositoryTopicConnection",
-                        "kind": "LinkedField",
-                        "name": "repositoryTopics",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "alias": null,
-                            "args": null,
-                            "concreteType": "RepositoryTopic",
-                            "kind": "LinkedField",
-                            "name": "nodes",
-                            "plural": true,
-                            "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "Topic",
-                                "kind": "LinkedField",
-                                "name": "topic",
-                                "plural": false,
-                                "selections": (v12/*: any*/),
-                                "storageKey": null
-                              }
-                            ],
-                            "storageKey": null
-                          }
-                        ],
-                        "storageKey": "repositoryTopics(first:10)"
+                        "kind": "FragmentSpread",
+                        "name": "fragment_repository"
                       }
                     ],
                     "type": "Repository",
                     "abstractKey": null
                   },
-                  (v15/*: any*/)
+                  (v5/*: any*/)
                 ],
                 "storageKey": null
               },
-              (v16/*: any*/)
+              (v6/*: any*/)
             ],
             "storageKey": null
           },
-          (v17/*: any*/)
+          (v7/*: any*/)
         ],
         "storageKey": null
       }
@@ -341,7 +193,7 @@ return {
     "selections": [
       {
         "alias": null,
-        "args": (v18/*: any*/),
+        "args": (v8/*: any*/),
         "concreteType": "SearchResultItemConnection",
         "kind": "LinkedField",
         "name": "search",
@@ -363,12 +215,12 @@ return {
                 "name": "node",
                 "plural": false,
                 "selections": [
-                  (v15/*: any*/),
+                  (v5/*: any*/),
                   {
                     "kind": "InlineFragment",
                     "selections": [
                       (v4/*: any*/),
-                      (v5/*: any*/),
+                      (v9/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -377,17 +229,53 @@ return {
                         "name": "owner",
                         "plural": false,
                         "selections": [
-                          (v15/*: any*/),
-                          (v6/*: any*/),
+                          (v5/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "login",
+                            "storageKey": null
+                          },
                           (v4/*: any*/)
                         ],
                         "storageKey": null
                       },
-                      (v7/*: any*/),
-                      (v8/*: any*/),
-                      (v9/*: any*/),
-                      (v10/*: any*/),
-                      (v11/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "description",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "url",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "stargazerCount",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "forkCount",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "updatedAt",
+                        "storageKey": null
+                      },
                       {
                         "alias": null,
                         "args": null,
@@ -395,7 +283,7 @@ return {
                         "kind": "LinkedField",
                         "name": "licenseInfo",
                         "plural": false,
-                        "selections": (v19/*: any*/),
+                        "selections": (v10/*: any*/),
                         "storageKey": null
                       },
                       {
@@ -406,15 +294,27 @@ return {
                         "name": "primaryLanguage",
                         "plural": false,
                         "selections": [
-                          (v5/*: any*/),
-                          (v13/*: any*/),
+                          (v9/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "color",
+                            "storageKey": null
+                          },
                           (v4/*: any*/)
                         ],
                         "storageKey": null
                       },
                       {
                         "alias": null,
-                        "args": (v14/*: any*/),
+                        "args": [
+                          {
+                            "kind": "Literal",
+                            "name": "first",
+                            "value": 10
+                          }
+                        ],
                         "concreteType": "RepositoryTopicConnection",
                         "kind": "LinkedField",
                         "name": "repositoryTopics",
@@ -435,7 +335,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "topic",
                                 "plural": false,
-                                "selections": (v19/*: any*/),
+                                "selections": (v10/*: any*/),
                                 "storageKey": null
                               },
                               (v4/*: any*/)
@@ -460,17 +360,17 @@ return {
                 ],
                 "storageKey": null
               },
-              (v16/*: any*/)
+              (v6/*: any*/)
             ],
             "storageKey": null
           },
-          (v17/*: any*/)
+          (v7/*: any*/)
         ],
         "storageKey": null
       },
       {
         "alias": null,
-        "args": (v18/*: any*/),
+        "args": (v8/*: any*/),
         "filters": [
           "query",
           "type"
@@ -483,7 +383,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "edd88844989d0a2215100e6285039787",
+    "cacheID": "14746ebcf94abcbeb7012937bf2314c6",
     "id": null,
     "metadata": {
       "connection": [
@@ -499,11 +399,11 @@ return {
     },
     "name": "useRepositoryQueryQuery",
     "operationKind": "query",
-    "text": "query useRepositoryQueryQuery(\n  $query: String!\n  $first: Int = 10\n) {\n  search(query: $query, type: REPOSITORY, first: $first) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n          owner {\n            __typename\n            login\n            id\n          }\n          stargazerCount\n          forkCount\n          updatedAt\n          url\n          description\n          licenseInfo {\n            name\n            id\n          }\n          primaryLanguage {\n            name\n            color\n            id\n          }\n          repositoryTopics(first: 10) {\n            nodes {\n              topic {\n                name\n                id\n              }\n              id\n            }\n          }\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query useRepositoryQueryQuery(\n  $query: String!\n  $first: Int = 10\n) {\n  search(query: $query, type: REPOSITORY, first: $first) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment fragment_repository on Repository {\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f91e23cf867e1747f293d58a0a020f4d";
+(node as any).hash = "2f97f81c0ac564613cf34caf6a4e27af";
 
 export default node;
