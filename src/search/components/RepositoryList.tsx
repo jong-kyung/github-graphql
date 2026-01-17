@@ -4,7 +4,11 @@ import { useRepositorySearchContext } from '@/search/model/RepositorySearchConte
 const RepositoryList = () => {
   const { searchResult } = useRepositorySearchContext()
 
-  if (!searchResult?.edges || searchResult.edges.length === 0) {
+  if (searchResult === null) {
+    return null
+  }
+
+  if (searchResult.edges?.length === 0) {
     return (
       <div className="mt-8 text-center text-muted-foreground">
         No repositories found.
@@ -14,7 +18,7 @@ const RepositoryList = () => {
 
   return (
     <div className="mx-auto mt-4 max-w-4xl space-y-4">
-      {searchResult.edges.map((edge) => {
+      {searchResult.edges?.map((edge) => {
         if (!edge?.node) {
           return null
         }

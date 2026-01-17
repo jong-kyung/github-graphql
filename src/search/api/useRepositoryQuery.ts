@@ -23,13 +23,19 @@ interface UseRepositoryQueryParams {
 }
 
 const useRepositoryQuery = ({ query, first }: UseRepositoryQueryParams) => {
-  const { search } = useLazyLoadQuery<RepositoryQueryType>(
+  const data = useLazyLoadQuery<RepositoryQueryType>(
     repositoryQuery,
     { query, first: first ?? 10 },
     { fetchPolicy: 'store-or-network' },
   )
 
-  return { search }
+  if (!query) {
+    return {
+      search: null,
+    }
+  }
+
+  return { search: data.search }
 }
 
 export default useRepositoryQuery

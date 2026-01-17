@@ -2,7 +2,7 @@ import type { useRepositoryQueryQuery$data } from '@/search/api/__generated__/us
 import { createContext, useContext } from 'react'
 
 interface RepositorySearchContextProps {
-  searchResult: useRepositoryQueryQuery$data['search']
+  searchResult: useRepositoryQueryQuery$data['search'] | null
   handleSearch: (searchQuery: string) => void
 }
 
