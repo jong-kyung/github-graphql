@@ -10,6 +10,7 @@ export const repositoryCardFragment = graphql`
     description
     url
     stargazerCount
+    viewerHasStarred
     forkCount
     updatedAt
     licenseInfo {

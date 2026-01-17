@@ -15,6 +15,7 @@ import RepositoryTopicList from '@/search/components/RepositoryTopicList'
 import RepositoryLanguageInfo from '@/search/components/RepositoryLanguageInfo'
 import RepositoryLicenseInfo from '@/search/components/RepositoryLicenseInfo'
 import { memo } from 'react'
+import StarButton from '@/search/components/StarButton'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -26,8 +27,8 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
   return (
     <Card className="transition-shadow hover:shadow-md">
       <CardHeader>
-        <div className="flex items-start justify-between">
-          <CardTitle>
+        <div className="flex items-center justify-between">
+          <CardTitle className="flex items-center justify-center gap-1">
             <a
               href={repositoryInfo.url}
               target="_blank"
@@ -35,8 +36,12 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
               className="text-blue-600 hover:underline">
               {repositoryInfo.owner?.login}/{repositoryInfo.name}
             </a>
+            <BookMarkButton bookMarkData={repositoryInfo} />
           </CardTitle>
-          <BookMarkButton bookMarkData={repositoryInfo} />
+          <StarButton
+            repositoryId={repositoryInfo.id}
+            viewerHasStarred={repositoryInfo.viewerHasStarred}
+          />
         </div>
         <CardDescription className="pt-2">
           {repositoryInfo.description}
