@@ -50,7 +50,7 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
           />
           <div className="flex items-center">
             <Star className="mr-1.5 h-4 w-4" />
-            <span>{repositoryInfo.stargazerCount?.toLocaleString()}</span>
+            <span>{repositoryInfo.stargazerCount.toLocaleString()}</span>
           </div>
           <div className="flex items-center">
             <GitFork className="mr-1.5 h-4 w-4" />
