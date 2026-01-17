@@ -10,14 +10,19 @@ import {
   FormMessage,
 } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
-import { formSchema } from '@/search/model/formSchema'
-import type { z } from 'zod/v4-mini'
 
-interface SearchFormProps {
-  onSearch: (query: string) => void
-}
+import { z } from 'zod/v4-mini'
+import { useRepositorySearchContext } from '@/search/model/RepositorySearchContext'
 
-export function SearchForm({ onSearch }: SearchFormProps) {
+const formSchema = z.object({
+  query: z
+    .string()
+    .check(z.minLength(2, { error: '두 글자 이상 입력해주세요.' })),
+})
+
+const RepositorySearchForm = () => {
+  const { handleSearch } = useRepositorySearchContext()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -26,7 +31,7 @@ export function SearchForm({ onSearch }: SearchFormProps) {
   })
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    onSearch(values.query)
+    handleSearch(values.query)
   }
 
   return (
@@ -51,3 +56,5 @@ export function SearchForm({ onSearch }: SearchFormProps) {
     </Form>
   )
 }
+
+export default RepositorySearchForm

@@ -1,33 +1,41 @@
-import { graphql, useLazyLoadQuery } from "react-relay";
-import type { useRepositoryQueryQuery as RepositoryQueryType } from "./__generated__/useRepositoryQueryQuery.graphql";
+import { graphql, useLazyLoadQuery } from 'react-relay'
+import type { useRepositoryQueryQuery as RepositoryQueryType } from './__generated__/useRepositoryQueryQuery.graphql'
 
 const repositoryQuery = graphql`
   query useRepositoryQueryQuery($query: String!, $first: Int = 10) {
-    search(query: $query, type: REPOSITORY, first: $first) @connection(key: "RepositoryList_search") {
+    search(query: $query, type: REPOSITORY, first: $first)
+      @connection(key: "RepositoryList_search") {
       edges {
         node {
           ... on Repository {
             id
-            name
-            owner {
-              login
-            }
-            stargazerCount
-            url
-            description
+            ...fragment_repository
           }
         }
       }
     }
   }
-`;
+`
 
-export default function useRepositoryQuery({ query, first }: { query: string; first?: number }) {
-  const { search } = useLazyLoadQuery<RepositoryQueryType>(
+interface UseRepositoryQueryParams {
+  query: string
+  first?: number
+}
+
+const useRepositoryQuery = ({ query, first }: UseRepositoryQueryParams) => {
+  const data = useLazyLoadQuery<RepositoryQueryType>(
     repositoryQuery,
     { query, first: first ?? 10 },
-    { fetchPolicy: "store-or-network" }
-  );
+    { fetchPolicy: 'store-or-network' },
+  )
 
-  return { search };
+  if (!query) {
+    return {
+      search: null,
+    }
+  }
+
+  return { search: data.search }
 }
+
+export default useRepositoryQuery
