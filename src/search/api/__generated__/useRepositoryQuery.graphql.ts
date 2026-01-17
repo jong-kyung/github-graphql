@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c2b38dc182d896438fce59ca35e4e2c3>>
+ * @generated SignedSource<<39409dd24026b0516289d5995d3eac0c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -315,12 +315,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c4804712448f91e0f01e713cc3845b9d",
+    "cacheID": "98d135ccb4610fb00dccecd42b53544c",
     "id": null,
     "metadata": {},
     "name": "useRepositoryQuery",
     "operationKind": "query",
-    "text": "query useRepositoryQuery(\n  $query: String!\n) {\n  ...fragment_repositoryList_1Qr5xf\n}\n\nfragment fragment_repository on Repository {\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1Qr5xf on Query {\n  search(query: $query, type: REPOSITORY, first: 10) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query useRepositoryQuery(\n  $query: String!\n) {\n  ...fragment_repositoryList_1Qr5xf\n}\n\nfragment fragment_repository on Repository {\n  id\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1Qr5xf on Query {\n  search(query: $query, type: REPOSITORY, first: 10) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

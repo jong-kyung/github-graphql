@@ -11,6 +11,7 @@ import { formatDate } from '@/shared/utils/date'
 import { useFragment } from 'react-relay'
 import { repositoryCardFragment } from '@/search/model/fragment'
 import type { fragment_repository$key } from '@/search/model/__generated__/fragment_repository.graphql'
+import BookMarkButton from '@/search/components/BookmarkButton'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -22,15 +23,18 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
   return (
     <Card className="transition-shadow hover:shadow-md">
       <CardHeader>
-        <CardTitle>
-          <a
-            href={repositoryInfo.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline">
-            {repositoryInfo.owner?.login}/{repositoryInfo.name}
-          </a>
-        </CardTitle>
+        <div className="flex items-start justify-between">
+          <CardTitle>
+            <a
+              href={repositoryInfo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline">
+              {repositoryInfo.owner?.login}/{repositoryInfo.name}
+            </a>
+          </CardTitle>
+          <BookMarkButton bookMarkData={repositoryInfo} />
+        </div>
         <CardDescription className="pt-2">
           {repositoryInfo.description}
         </CardDescription>
