@@ -21,10 +21,10 @@ const BookmarkButton = ({ bookMarkData }: BookmarkButtonProps) => {
 
   return (
     <Button
+      className="size-fit cursor-pointer"
       variant="ghost"
       size="icon"
-      onClick={handleBookmarkClick}
-      className="text-gray-500 hover:text-gray-700">
+      onClick={handleBookmarkClick}>
       <Bookmark
         className={isActive ? 'text-yellow-500' : ''}
         fill={isActive ? 'currentColor' : 'none'}
