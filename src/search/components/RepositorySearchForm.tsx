@@ -15,9 +15,7 @@ import { z } from 'zod/v4-mini'
 import { useRepositorySearchContext } from '@/search/model/RepositorySearchContext'
 
 const formSchema = z.object({
-  query: z
-    .string()
-    .check(z.minLength(2, { error: '두 글자 이상 입력해주세요.' })),
+  query: z.string(),
 })
 
 const RepositorySearchForm = () => {
