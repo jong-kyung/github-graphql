@@ -48,7 +48,7 @@ const StarButton = ({ repositoryId, viewerHasStarred }: StarButtonProps) => {
       size="sm"
       variant={viewerHasStarred ? 'default' : 'outline'}
       onClick={handleToggleStar}>
-      <Star fill="white" />
+      <Star fill={viewerHasStarred ? 'white' : 'none'} />
       {viewerHasStarred ? 'Unstar' : 'Star'}
     </Button>
   )
