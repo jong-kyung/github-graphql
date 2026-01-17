@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8c07fc0d945e28e59d33d44ba3417663>>
+ * @generated SignedSource<<541c809ff6bfe2a624b2bf5f92eb0634>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -345,12 +345,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c36c50b454b6c621b08f72d209d8bdf8",
+    "cacheID": "1b060eb15025b696e67f2a5363229ec7",
     "id": null,
     "metadata": {},
     "name": "RepositoryListPaginationQuery",
     "operationKind": "query",
-    "text": "query RepositoryListPaginationQuery(\n  $count: Int = 10\n  $cursor: String\n  $query: String!\n) {\n  ...fragment_repositoryList_1jWD3d\n}\n\nfragment fragment_repository on Repository {\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1jWD3d on Query {\n  search(query: $query, type: REPOSITORY, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query RepositoryListPaginationQuery(\n  $count: Int = 10\n  $cursor: String\n  $query: String!\n) {\n  ...fragment_repositoryList_1jWD3d\n}\n\nfragment fragment_repository on Repository {\n  id\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1jWD3d on Query {\n  search(query: $query, type: REPOSITORY, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

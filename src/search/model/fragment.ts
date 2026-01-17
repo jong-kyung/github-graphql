@@ -2,6 +2,7 @@ import { graphql } from 'react-relay'
 
 export const repositoryCardFragment = graphql`
   fragment fragment_repository on Repository {
+    id
     name
     owner {
       login
