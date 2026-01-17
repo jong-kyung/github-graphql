@@ -34,7 +34,7 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline">
-              {repositoryInfo.owner?.login}/{repositoryInfo.name}
+              {repositoryInfo.owner.login}/{repositoryInfo.name}
             </a>
             <BookMarkButton bookMarkData={repositoryInfo} />
           </CardTitle>
