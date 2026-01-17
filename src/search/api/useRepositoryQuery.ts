@@ -14,8 +14,24 @@ const repositoryQuery = graphql`
               login
             }
             stargazerCount
+            forkCount
+            updatedAt
             url
             description
+            licenseInfo {
+              name
+            }
+            primaryLanguage {
+              name
+              color
+            }
+            repositoryTopics(first: 10) {
+              nodes {
+                topic {
+                  name
+                }
+              }
+            }
           }
         }
       }
