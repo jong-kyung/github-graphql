@@ -13,7 +13,7 @@ export const BookmarkDropdown = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger className="cursor-pointer" asChild>
         <Button variant="ghost" className="text-gray-500 hover:text-gray-700">
           <Bookmark />
           Bookmark
