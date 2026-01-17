@@ -1,8 +1,7 @@
-import type { useRepositoryQueryQuery$data } from '@/search/api/__generated__/useRepositoryQueryQuery.graphql'
 import { createContext, useContext } from 'react'
 
 interface RepositorySearchContextProps {
-  searchResult: useRepositoryQueryQuery$data['search'] | null
+  query: string
   handleSearch: (searchQuery: string) => void
 }
 

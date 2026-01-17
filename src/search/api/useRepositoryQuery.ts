@@ -1,41 +1,24 @@
 import { graphql, useLazyLoadQuery } from 'react-relay'
-import type { useRepositoryQueryQuery as RepositoryQueryType } from './__generated__/useRepositoryQueryQuery.graphql'
+import type { useRepositoryQuery as TUseRepositoryQuery } from './__generated__/useRepositoryQuery.graphql'
 
 const repositoryQuery = graphql`
-  query useRepositoryQueryQuery($query: String!, $first: Int = 10) {
-    search(query: $query, type: REPOSITORY, first: $first)
-      @connection(key: "RepositoryList_search") {
-      edges {
-        node {
-          ... on Repository {
-            id
-            ...fragment_repository
-          }
-        }
-      }
-    }
+  query useRepositoryQuery($query: String!) {
+    ...fragment_repositoryList @arguments(query: $query)
   }
 `
 
 interface UseRepositoryQueryParams {
   query: string
-  first?: number
 }
 
-const useRepositoryQuery = ({ query, first }: UseRepositoryQueryParams) => {
-  const data = useLazyLoadQuery<RepositoryQueryType>(
+const useRepositoryQuery = ({ query }: UseRepositoryQueryParams) => {
+  const data = useLazyLoadQuery<TUseRepositoryQuery>(
     repositoryQuery,
-    { query, first: first ?? 10 },
+    { query },
     { fetchPolicy: 'store-or-network' },
   )
 
-  if (!query) {
-    return {
-      search: null,
-    }
-  }
-
-  return { search: data.search }
+  return data
 }
 
 export default useRepositoryQuery

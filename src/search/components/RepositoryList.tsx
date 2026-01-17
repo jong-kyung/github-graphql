@@ -1,24 +1,19 @@
 import RepositoryCard from '@/search/components/RepositoryCard'
-import { useRepositorySearchContext } from '@/search/model/RepositorySearchContext'
+import type { fragment_repositoryList$key } from '@/search/model/__generated__/fragment_repositoryList.graphql'
+import { repositoryListFragment } from '@/search/model/fragment'
 
-const RepositoryList = () => {
-  const { searchResult } = useRepositorySearchContext()
+import { usePaginationFragment } from 'react-relay'
 
-  if (searchResult === null) {
-    return null
-  }
+interface RepositoryListProps {
+  fragmentKey: fragment_repositoryList$key
+}
 
-  if (searchResult.edges?.length === 0) {
-    return (
-      <div className="mt-8 text-center text-muted-foreground">
-        No repositories found.
-      </div>
-    )
-  }
+const RepositoryList = ({ fragmentKey }: RepositoryListProps) => {
+  const { data } = usePaginationFragment(repositoryListFragment, fragmentKey)
 
   return (
     <div className="mx-auto mt-4 max-w-4xl space-y-4">
-      {searchResult.edges?.map((edge) => {
+      {data.search.edges?.map((edge) => {
         if (!edge?.node) {
           return null
         }
