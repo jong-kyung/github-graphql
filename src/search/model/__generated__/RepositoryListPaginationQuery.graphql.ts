@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<541c809ff6bfe2a624b2bf5f92eb0634>>
+ * @generated SignedSource<<cac27f4aa1d29f8b55a77685febb2be2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -198,6 +198,13 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
+                        "name": "viewerHasStarred",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
                         "name": "forkCount",
                         "storageKey": null
                       },
@@ -345,12 +352,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1b060eb15025b696e67f2a5363229ec7",
+    "cacheID": "439e133ea456e670c94206f5f350015d",
     "id": null,
     "metadata": {},
     "name": "RepositoryListPaginationQuery",
     "operationKind": "query",
-    "text": "query RepositoryListPaginationQuery(\n  $count: Int = 10\n  $cursor: String\n  $query: String!\n) {\n  ...fragment_repositoryList_1jWD3d\n}\n\nfragment fragment_repository on Repository {\n  id\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1jWD3d on Query {\n  search(query: $query, type: REPOSITORY, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query RepositoryListPaginationQuery(\n  $count: Int = 10\n  $cursor: String\n  $query: String!\n) {\n  ...fragment_repositoryList_1jWD3d\n}\n\nfragment fragment_repository on Repository {\n  id\n  name\n  owner {\n    __typename\n    login\n    id\n  }\n  description\n  url\n  stargazerCount\n  viewerHasStarred\n  forkCount\n  updatedAt\n  licenseInfo {\n    name\n    id\n  }\n  primaryLanguage {\n    name\n    color\n    id\n  }\n  repositoryTopics(first: 10) {\n    nodes {\n      topic {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment fragment_repositoryList_1jWD3d on Query {\n  search(query: $query, type: REPOSITORY, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...fragment_repository\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7d5d1e37e9836642cba0cf4d73360b97>>
+ * @generated SignedSource<<8c415887b77293e2b92a1215ee29254a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -35,6 +35,7 @@ export type fragment_repository$data = {
   readonly stargazerCount: number;
   readonly updatedAt: any;
   readonly url: any;
+  readonly viewerHasStarred: boolean;
   readonly " $fragmentType": "fragment_repository";
 };
 export type fragment_repository$key = {
@@ -104,6 +105,13 @@ return {
       "args": null,
       "kind": "ScalarField",
       "name": "stargazerCount",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "viewerHasStarred",
       "storageKey": null
     },
     {
@@ -193,6 +201,6 @@ return {
 };
 })();
 
-(node as any).hash = "c58d6e591d6b0865cd25e26ff56c227a";
+(node as any).hash = "eec648d02129b7acfacf46b36c245538";
 
 export default node;
