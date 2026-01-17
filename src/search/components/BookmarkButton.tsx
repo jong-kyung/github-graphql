@@ -24,6 +24,8 @@ const BookmarkButton = ({ bookMarkData }: BookmarkButtonProps) => {
       className="size-fit cursor-pointer"
       variant="ghost"
       size="icon"
+      aria-label={isActive ? 'Remove bookmark' : 'Add bookmark'}
+      aria-pressed={isActive}
       onClick={handleBookmarkClick}>
       <Bookmark
         className={isActive ? 'text-yellow-500' : ''}
