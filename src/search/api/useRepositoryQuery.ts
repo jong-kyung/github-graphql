@@ -1,9 +1,10 @@
-import { graphql, useLazyLoadQuery } from "react-relay";
-import type { useRepositoryQueryQuery as RepositoryQueryType } from "./__generated__/useRepositoryQueryQuery.graphql";
+import { graphql, useLazyLoadQuery } from 'react-relay'
+import type { useRepositoryQueryQuery as RepositoryQueryType } from './__generated__/useRepositoryQueryQuery.graphql'
 
 const repositoryQuery = graphql`
   query useRepositoryQueryQuery($query: String!, $first: Int = 10) {
-    search(query: $query, type: REPOSITORY, first: $first) @connection(key: "RepositoryList_search") {
+    search(query: $query, type: REPOSITORY, first: $first)
+      @connection(key: "RepositoryList_search") {
       edges {
         node {
           ... on Repository {
@@ -20,14 +21,21 @@ const repositoryQuery = graphql`
       }
     }
   }
-`;
+`
 
-export default function useRepositoryQuery({ query, first }: { query: string; first?: number }) {
+interface UseRepositoryQueryParams {
+  query: string
+  first?: number
+}
+
+const useRepositoryQuery = ({ query, first }: UseRepositoryQueryParams) => {
   const { search } = useLazyLoadQuery<RepositoryQueryType>(
     repositoryQuery,
     { query, first: first ?? 10 },
-    { fetchPolicy: "store-or-network" }
-  );
+    { fetchPolicy: 'store-or-network' },
+  )
 
-  return { search };
+  return { search }
 }
+
+export default useRepositoryQuery
