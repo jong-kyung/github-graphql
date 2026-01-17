@@ -6,12 +6,12 @@ import {
   CardTitle,
 } from '@/shared/ui/card'
 import { Star, GitFork, Scale } from 'lucide-react'
-import { Badge } from '@/shared/ui/badge'
 import { formatDate } from '@/shared/utils/date'
 import { useFragment } from 'react-relay'
 import { repositoryCardFragment } from '@/search/model/fragment'
 import type { fragment_repository$key } from '@/search/model/__generated__/fragment_repository.graphql'
 import BookMarkButton from '@/search/components/BookmarkButton'
+import RepositoryTopicList from '@/search/components/RepositoryTopicList'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -40,21 +40,9 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {repositoryInfo.repositoryTopics?.nodes && (
-          <div className="flex flex-wrap items-center gap-2">
-            {repositoryInfo.repositoryTopics.nodes.map(
-              (node) =>
-                node?.topic && (
-                  <Badge
-                    key={node.topic.name}
-                    variant="secondary"
-                    className="transition-colors hover:bg-secondary/80">
-                    {node.topic.name}
-                  </Badge>
-                ),
-            )}
-          </div>
-        )}
+        <RepositoryTopicList
+          nodeList={repositoryInfo.repositoryTopics?.nodes}
+        />
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
           {repositoryInfo.primaryLanguage && (
             <div className="flex items-center">
