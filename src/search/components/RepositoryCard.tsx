@@ -12,6 +12,7 @@ import { repositoryCardFragment } from '@/search/model/fragment'
 import type { fragment_repository$key } from '@/search/model/__generated__/fragment_repository.graphql'
 import BookMarkButton from '@/search/components/BookmarkButton'
 import RepositoryTopicList from '@/search/components/RepositoryTopicList'
+import RepositoryLanguageInfo from '@/search/components/RepositoryLanguageInfo'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -44,18 +45,9 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
           nodeList={repositoryInfo.repositoryTopics?.nodes}
         />
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          {repositoryInfo.primaryLanguage && (
-            <div className="flex items-center">
-              <span
-                className="mr-1.5 inline-block h-3 w-3 rounded-full"
-                style={{
-                  backgroundColor:
-                    repositoryInfo.primaryLanguage.color ?? '#ccc',
-                }}
-              />
-              <span>{repositoryInfo.primaryLanguage.name}</span>
-            </div>
-          )}
+          <RepositoryLanguageInfo
+            primaryLanguage={repositoryInfo.primaryLanguage}
+          />
           <div className="flex items-center">
             <Star className="mr-1.5 h-4 w-4" />
             <span>{repositoryInfo.stargazerCount?.toLocaleString()}</span>
