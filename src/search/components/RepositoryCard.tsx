@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/shared/ui/card'
-import { Star, GitFork, Scale } from 'lucide-react'
+import { Star, GitFork } from 'lucide-react'
 import { formatDate } from '@/shared/utils/date'
 import { useFragment } from 'react-relay'
 import { repositoryCardFragment } from '@/search/model/fragment'
@@ -13,6 +13,7 @@ import type { fragment_repository$key } from '@/search/model/__generated__/fragm
 import BookMarkButton from '@/search/components/BookmarkButton'
 import RepositoryTopicList from '@/search/components/RepositoryTopicList'
 import RepositoryLanguageInfo from '@/search/components/RepositoryLanguageInfo'
+import RepositoryLicenseInfo from '@/search/components/RepositoryLicenseInfo'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -56,12 +57,7 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
             <GitFork className="mr-1.5 h-4 w-4" />
             <span>{repositoryInfo.forkCount?.toLocaleString()}</span>
           </div>
-          {repositoryInfo.licenseInfo?.name && (
-            <div className="flex items-center">
-              <Scale className="mr-1.5 h-4 w-4" />
-              <span>{repositoryInfo.licenseInfo.name}</span>
-            </div>
-          )}
+          <RepositoryLicenseInfo licenseInfo={repositoryInfo.licenseInfo} />
           <span>Updated {formatDate(repositoryInfo.updatedAt)}</span>
         </div>
       </CardContent>
