@@ -21,11 +21,13 @@ export const BookmarkDropdown = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
         {bookmarks.length === 0 && (
-          <DropdownMenuItem disabled>No bookmarks yet.</DropdownMenuItem>
+          <DropdownMenuItem disabled asChild>
+            No bookmarks yet.
+          </DropdownMenuItem>
         )}
         {bookmarks.map((repo) => {
           return (
-            <DropdownMenuItem key={repo.id}>
+            <DropdownMenuItem key={repo.id} asChild>
               <a href={repo.url} target="_blank" rel="noopener noreferrer">
                 {repo.owner.login}/{repo.name}
               </a>
