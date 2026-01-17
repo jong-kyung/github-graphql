@@ -27,7 +27,7 @@ export const BookmarkDropdown = () => {
           return (
             <DropdownMenuItem key={repo.id}>
               <a href={repo.url} target="_blank" rel="noopener noreferrer">
-                {repo.owner?.login}/{repo.name}
+                {repo.owner.login}/{repo.name}
               </a>
             </DropdownMenuItem>
           )
