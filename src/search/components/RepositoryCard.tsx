@@ -5,13 +5,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/shared/ui/card'
-import { Star, GitFork, Scale } from 'lucide-react'
-import { Badge } from '@/shared/ui/badge'
+import { Star, GitFork } from 'lucide-react'
 import { formatDate } from '@/shared/utils/date'
 import { useFragment } from 'react-relay'
 import { repositoryCardFragment } from '@/search/model/fragment'
 import type { fragment_repository$key } from '@/search/model/__generated__/fragment_repository.graphql'
 import BookMarkButton from '@/search/components/BookmarkButton'
+import RepositoryTopicList from '@/search/components/RepositoryTopicList'
+import RepositoryLanguageInfo from '@/search/components/RepositoryLanguageInfo'
+import RepositoryLicenseInfo from '@/search/components/RepositoryLicenseInfo'
+import { memo } from 'react'
 
 interface RepositoryCardProps {
   repository: fragment_repository$key
@@ -40,48 +43,22 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {repositoryInfo.repositoryTopics?.nodes && (
-          <div className="flex flex-wrap items-center gap-2">
-            {repositoryInfo.repositoryTopics.nodes.map(
-              (node) =>
-                node?.topic && (
-                  <Badge
-                    key={node.topic.name}
-                    variant="secondary"
-                    className="transition-colors hover:bg-secondary/80">
-                    {node.topic.name}
-                  </Badge>
-                ),
-            )}
-          </div>
-        )}
+        <RepositoryTopicList
+          nodeList={repositoryInfo.repositoryTopics?.nodes}
+        />
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-          {repositoryInfo.primaryLanguage && (
-            <div className="flex items-center">
-              <span
-                className="mr-1.5 inline-block h-3 w-3 rounded-full"
-                style={{
-                  backgroundColor:
-                    repositoryInfo.primaryLanguage.color ?? '#ccc',
-                }}
-              />
-              <span>{repositoryInfo.primaryLanguage.name}</span>
-            </div>
-          )}
+          <RepositoryLanguageInfo
+            primaryLanguage={repositoryInfo.primaryLanguage}
+          />
           <div className="flex items-center">
             <Star className="mr-1.5 h-4 w-4" />
-            <span>{repositoryInfo.stargazerCount?.toLocaleString()}</span>
+            <span>{repositoryInfo.stargazerCount.toLocaleString()}</span>
           </div>
           <div className="flex items-center">
             <GitFork className="mr-1.5 h-4 w-4" />
             <span>{repositoryInfo.forkCount?.toLocaleString()}</span>
           </div>
-          {repositoryInfo.licenseInfo?.name && (
-            <div className="flex items-center">
-              <Scale className="mr-1.5 h-4 w-4" />
-              <span>{repositoryInfo.licenseInfo.name}</span>
-            </div>
-          )}
+          <RepositoryLicenseInfo licenseInfo={repositoryInfo.licenseInfo} />
           <span>Updated {formatDate(repositoryInfo.updatedAt)}</span>
         </div>
       </CardContent>
@@ -89,4 +66,4 @@ const RepositoryCard = ({ repository }: RepositoryCardProps) => {
   )
 }
 
-export default RepositoryCard
+export default memo(RepositoryCard)
